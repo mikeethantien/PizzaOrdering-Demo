@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/javascripts/listeners.js"></script>
+
+  <title><%= title %></title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <a class="navbar-brand" href="/">
+    <img class="img-responsive" alt="Brand" src="/images/pizza.png">
+  </a>
+  <ul class="nav navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="/orders">Orders</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><%= message %></div>
+    <div class="panel-body">
+
+      <%
+        if(orders != null && orders.length > 0)
+        {
+      %>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Customer Information</th>
+                <th>Order Information</th>
+                <th>Amount Due</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%
+                if(orders) {
+                  orders.forEach(function(order) {
+              %>
+                  <tr id="<%= order._id %>">
+                    <th><%= order.createdOn %></th>
+                    <th><strong><%= order.customerInfo.name %></strong><br/>
+                        <small><span class="glyphicon glyphicon-home"></span> <%= order.customerInfo.address %></small><br/>
+                        <small><span class="glyphicon glyphicon-earphone"></span> <%= order.customerInfo.phoneNumber %></small><br/>
+                    </th>
+                    <th><strong><%= order.orderInfo.quantity %> x <%= order.orderInfo.size %> - <%= order.orderInfo.crust %> Crust</strong><br/>
+                        <small>
+                          <%= order.orderInfo.cheese %> Cheese<br/>
+                          <%= order.orderInfo.sauce %> Sauce<br/>
+                          <%= order.orderInfo.toppings %>
+                        </small>
+                    <th><%= order.amountDue %></th>
+                    <th>
+                      <button data-for="<%= order._id %>" class="btn btn-danger btn-delete"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                    </th>
+                  </tr>
+              <%
+                  });
+                }
+              %>
+            </tbody>
+          </table>
+      <%
+        }
+
+        else {
+      %>
+          <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <strong>Heads up!<strong> There is current no order.
+          </div>
+      <%
+        }
+      %>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

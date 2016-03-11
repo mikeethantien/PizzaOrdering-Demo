@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/javascripts/listeners.js"></script>
+
+  <title><%= title %></title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <a class="navbar-brand" href="/">
+    <img class="img-responsive" alt="Brand" src="/images/pizza.png">
+  </a>
+  <ul class="nav navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="/orders">Orders</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><%= heading1 %></div>
+    <div class="panel-body">
+      <p><strong>Name:</strong> <%=customerInfo["name"]%></p>
+      <p><strong>Address:</strong> <%=customerInfo["address"]%></p>
+      <p><strong>Phone Number:</strong> <%=customerInfo["phoneNumber"]%></p>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading"><%= heading2 %></div>
+    <div class="panel-body">
+      <p><strong>Size:</strong> <%=orderInfo["size"]%></p>
+      <p><strong>Crust:</strong> <%=orderInfo["crust"]%></p>
+      <p><strong>Cheese:</strong> <%=orderInfo["cheese"]%></p>
+      <p><strong>Sauce:</strong> <%=orderInfo["sauce"]%></p>
+      <p><strong>Toppings:</strong> <%=orderInfo["toppings"]%></p>
+      <p><strong>Quantity:</strong> <%=orderInfo["quantity"]%></p>
+    </div>
+  </div>
+
+  <label><%=subtotal_label%>: <%=subtotal%></label>
+  <br/>
+  <label><%=tax_label%>: <%=tax%></label>
+  <br/>
+  <label><%=amountDue_label%>: <%=amountDue%></label>
+
+  <br/>
+  <button class="btn btn-default btn-back">Back</button>
+</div>
+
+
+</body>
+</html>

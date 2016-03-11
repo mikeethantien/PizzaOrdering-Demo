@@ -1,0 +1,8 @@
+{
+ "title": "Welcome to Mike's Pizza",
+ "heading1": "Your Information",
+ "heading2": "Order Summary",
+ "subtotal_label": "Subtotal",
+ "tax_label": "Tax",
+ "amountDue_label": "Amount Due"
+}

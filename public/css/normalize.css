@@ -1,0 +1,11 @@
+th {
+  font-weight: normal;
+}
+
+thead th {
+  font-weight: bold;
+}
+
+small .glyphicon {
+  color: #337ab7;
+}

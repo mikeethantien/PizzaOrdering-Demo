@@ -1,0 +1,103 @@
+{
+ "title": "Welcome to Mike's Pizza",
+ "message": "Place Your Order",
+
+ "groups": [
+   {
+     "title": "Customer Information",
+     "id": "customerInformation",
+     "items": [
+       {
+         "label": "Name",
+         "id": "name",
+         "type": "text",
+         "data": [
+           {"label": "First Name", "id": "firstName", "required": true, "size": "4", "errorMessage": "Please enter a valid first name"},
+           {"label": "Last Name", "id": "lastName", "required": true, "size": "4", "errorMessage": "Please enter a valid last name"}
+         ]
+       },
+       {
+         "label": "Phone Number",
+         "id": "phoneNumber",
+         "type": "tel",
+         "data": [
+           {"label": "e.g. 604-555-5555", "id": "phoneNumber", "required": true, "size": "4", "pattern": "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]{0,1}\\d{3}[\\s.-]{0,1}\\d{4}$", "errorMessage": "Please enter a valid number (e.g. 604-555-5555)."}
+         ]
+       },
+       {
+         "label": "Address",
+         "id": "address",
+         "type": "text",
+         "data": [
+           {"label": "Unit Number", "id": "unitNumber", "size": "2"},
+           {"label": "Street Number", "id": "streetNumber", "required": true, "size": "2", "errorMessage": "Please enter a valid street number"},
+           {"label": "Street Name", "id": "streetName", "required": true, "size": "3", "errorMessage": "Please enter a valid street name"},
+           {"label": "City", "id": "city", "required": true, "size": "3", "errorMessage": "Please enter a valid city"}
+         ]
+       },
+       {
+         "label": "",
+         "id": "address2",
+         "type": "text",
+         "data": [
+           {"label": "Province", "id": "province", "type": "select", "size": "3", "options": [
+              {"label": "Alberta", "value": "Alberta"},
+              {"label": "British Columbia", "value": "British Columbia"},
+              {"label": "Monitoba", "value": "Monitoba"},
+              {"label": "New Brunswick", "value": "New Brunswick"},
+              {"label": "Newfoundland", "value": "Newfoundland"},
+              {"label": "Ontario", "value": "Ontario"},
+              {"label": "Saskatchewan", "value": "Saskatchewan"}
+             ]
+           },
+           {"label": "Postcode", "id": "postcode", "required": true, "size": "2", "pattern": "^[A-z]\\d[A-z][\\s]{0,1}\\d[A-z]\\d", "errorMessage": "Please enter a valid postcode (e.g. V6B 5X6)"}
+         ]
+       }
+     ]
+   },
+   {
+     "title": "Customize Your Pizza",
+     "id": "orderInformation",
+     "items": [
+       {
+        "label": "Crust",
+        "id": "crust",
+        "type": "radio",
+        "data": []
+       },
+       {
+        "label": "Size",
+        "id": "size",
+        "type": "radio",
+        "data": []
+       },
+       {
+         "label": "Cheese",
+         "id": "cheese",
+         "type": "radio",
+         "data": []
+       },
+       {
+        "label": "Sauce",
+        "id": "sauce",
+        "type": "radio",
+        "data": []
+       },
+       {
+        "label": "Toppings",
+        "id": "toppings",
+        "type": "checkbox",
+        "data": []
+       },
+       {
+         "label": "Quantity",
+         "id": "quantity",
+         "type": "number",
+         "data": [
+           {"label": "quantity", "id": "quantity", "value": "1", "min": "1", "max": "10"}
+         ]
+       }
+     ]
+   }
+ ]
+}

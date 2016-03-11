@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css" />
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/bootstrap/js/validator.js"></script>
+  <title><%= title %></title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <a class="navbar-brand" href="/">
+    <img class="img-responsive" alt="Brand" src="/images/pizza.png">
+  </a>
+  <ul class="nav navbar-nav">
+    <li class="active"><a href="/">Home</a></li>
+    <li><a href="/orders">Orders</a></li>
+  </ul>
+</nav>
+
+<form role="form" method="post" action="/" data-toggle="validator" data-disable="false">
+
+<div class="container">
+  <div class="alert alert-success <% if(orderSubmitted == null || orderSubmitted == false) { %> hidden <% } %>" role="alert">
+    <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+    <strong>Your order has been submitted.</strong> Click on the <a href="/orders">orders</a> tab to see all the orders.
+  </div>
+
+  <div class="alert alert-danger" <% if(orderSubmitted == null || orderSubmitted == true) { %> hidden <% } %>" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <strong>Order submission failed.</strong> Please try again.
+  </div>
+
+  <% for(var key in groups) {
+     var group = groups[key];
+     var items = group.items %>
+    <div class="panel panel-primary">
+      <div class="panel-heading"><%=group.title%></div>
+      <div class="panel-body">
+         <fieldset>
+           <%
+              for(var i in items) {
+                var item = items[i];
+           %>
+                <div class="control-group">
+                    <label class="control-label"><%=item.label%></label>
+                    <div class="controls">
+                      <div class="row">
+                    <%
+                      for(var j in item.data) {
+                        var data = item.data[j];
+                        switch(item.type) {
+                          case "radio":
+                    %>
+                          <div class="col-xs-2 form-group">
+                            <label class="radio-inline">
+                               <input type="radio" name="<%=item.id%>" id="<%=item.id%>" value="<%=data.id%>" <% if(!!data.default) { %> checked <% } %>><%=data.label%>
+                               <% if(data.price) { %> <small> (<%=currency%><%=data.price%>) </small> <% } %>
+                            </label>
+                          </div>
+                    <%
+                            break;
+                          case "checkbox":
+                    %>
+                          <div class="col-xs-2 form-group">
+                            <label class="checkbox-inline">
+                              <input type="checkbox" id="<%=item.id%>" name="<%=item.id%>" value="<%=data.id%>"><%=data.label%>
+                              <% if(data.price) { %> <small> (<%=currency%><%=data.price%>) </small> <% } %>
+                            </label>
+                          </div>
+                    <%
+                            break;
+                          case "number":
+                    %>
+                          <div class="col-xs-2 form-group">
+                            <input id="<%=data.id%>" name="<%=data.id%>" class="form-control" type="number" value="<%=data.value%>" min="<%=data.min%>" max="<%=data.max%>"/>
+                            <div class="help-block with-errors"></div>
+                          </div>
+                    <%
+                            break;
+                          default:
+                    %>
+
+                            <div class="col-xs-<%=data.size%> form-group">
+                    <%
+                            if(data.type === "select")
+                            {
+                    %>
+                              <select class="form-control" name="<%=data.id%>">
+                    <%
+                              for(var k in data.options)
+                              {
+                                var option = data.options[k];
+                    %>
+                              <option value="<%=option.value%>"><%=option.label%></option>
+                    <%
+                              }
+                    %>
+                              </select>
+                   <%
+                            }
+
+                            else
+                            {
+                    %>
+                              <input id="<%=data.id%>" name="<%=data.id%>" type="text" class="form-control" placeholder="<%=data.label%>" <% if(!!data.required) { %> required <% } %> <% if(data.pattern){ %> pattern="<%= data.pattern %>" <% } %> <% if(data.errorMessage){ %> data-error="<%= data.errorMessage %>" <% } %>/>
+                              <div class="help-block with-errors"></div>
+                    <%
+                            }
+                    %>
+                            </div>
+                    <%
+                            break;
+                        }
+                      }
+                    %>
+                    </div>
+                   </div>
+               </div>
+               <br/>
+           <% } %>
+         </fieldset>
+      </div/>
+    </div>
+  <% } %>
+
+  <br>
+  <button type="submit" class="btn btn-primary" value="submit">Place Order</button>
+
+</div>
+</form>
+</body>
+</html>

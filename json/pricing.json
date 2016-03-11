@@ -1,0 +1,35 @@
+{
+  "currency": "$",
+  "tax": "0.12",
+  "crust": {
+    "regular" : {"label": "Regular", "id":"regular", "default": true},
+    "thin": {"label": "Thin", "id": "thin"}
+  },
+  "size": {
+    "8": {"label": "8\"", "id": "8", "price": "10.00", "default": true},
+    "10": {"label": "10\"", "id": "10", "price": "15.00"},
+    "12": {"label": "12\"", "id": "12", "price": "20.00"},
+    "14": {"label": "14\"", "id": "14", "price": "25.00"}
+  },
+  "cheese": {
+    "mazzarella": {"label": "Mazzarella", "id": "mazzarella", "default": true},
+    "swiss": {"label": "Swiss", "id": "swiss"},
+    "cheddar": {"label": "Cheddar", "id": "cheddar"}
+  },
+  "sauce": {
+    "tomato" : {"label": "Tomato", "id": "tomato", "default": true},
+    "pesto": {"label": "Pesto", "id": "pesto"},
+    "bbq": {"label": "BBQ", "id": "bbq"},
+    "honeyGarlic": {"label": "Honey Garlic", "id": "honeyGarlic"}
+  },
+  "toppings": {
+    "chicken": {"label": "Chicken", "id": "chicken", "price": "2.00", "default": true},
+    "beef": {"label": "Beef", "id": "beef", "price": "2.00"},
+    "sausages": {"label": "Sausages", "id": "sausages", "price": "2.00"},
+    "greenPeppers": {"label": "Green Peppers", "id": "greenPeppers", "price": "0.50"},
+    "mushrooms": {"label": "Mushrooms", "id": "mushrooms", "price": "0.50"},
+    "onions": {"label": "Onions", "id": "onions", "price": "0.50"},
+    "olives": {"label": "Olives", "id": "olives", "price": "0.50"},
+    "spinach": {"label": "Spinach", "id": "spinach", "price": "0.50"}
+  }
+}
